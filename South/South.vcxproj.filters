@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="South">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="South\auth">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2F1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="South\UI">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2F3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="South\Utils">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2F4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mapper">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImGui">
+      <UniqueIdentifier>{7D972213-D2A3-4ed5-B13B-CD968323FA62}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="South\auth\main.cpp">
+      <Filter>South\auth</Filter>
+    </ClCompile>
+    <ClCompile Include="South\UI\menu.cpp">
+      <Filter>South\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_draw.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_tables.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_widgets.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_dx11.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="ImGui\imgui_stdlib.cpp">
+      <Filter>ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper\Mapper\intel_driver.cpp">
+      <Filter>Mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper\Mapper\kdmapper.cpp">
+      <Filter>Mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper\Mapper\portable_executable.cpp">
+      <Filter>Mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper\Mapper\service.cpp">
+      <Filter>Mapper</Filter>
+    </ClCompile>
+    <ClCompile Include="Mapper\Mapper\utils.cpp">
+      <Filter>Mapper</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ImGui\imgui.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_dx11.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_impl_win32.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_internal.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_rectpack.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_textedit.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imstb_truetype.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imconfig.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\imgui_stdlib.h">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\FontAwesome.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\FontAwesome6.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\Fonts.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\ImageBytes.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\LoginHeroBytes.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\LoaderBrandBytes.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\MainMenuBrandBytes.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\Fonts\ProggyClean.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGui\InterfaceScale.hpp">
+      <Filter>ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="South\UI\menu.h">
+      <Filter>South\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="South\UI\overlay.h">
+      <Filter>South\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="South\UI\LoaderArtwork.hpp">
+      <Filter>South\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="South\UI\LoaderNotification.hpp">
+      <Filter>South\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="South\auth\settings.h">
+      <Filter>South\auth</Filter>
+    </ClInclude>
+    <ClInclude Include="South\auth\auth.h">
+      <Filter>South\auth</Filter>
+    </ClInclude>
+    <ClInclude Include="South\Utils\HardwareCleaner.hpp">
+      <Filter>South\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="South\Utils\Mapper.hpp">
+      <Filter>South\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="South\Utils\xorstr.hpp">
+      <Filter>South\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\intel_driver.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\intel_driver_resource.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\kdmapper.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\nt.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\portable_executable.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\service.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+    <ClInclude Include="Mapper\Mapper\include\utils.hpp">
+      <Filter>Mapper</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

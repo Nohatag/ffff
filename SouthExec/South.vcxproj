@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{04B17470-CB82-4724-904B-25445926AB86}</ProjectGuid>
+    <RootNamespace>South</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>South</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(ProjectDir)dui\webview2sdk\build\native\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)dui\webview2sdk\build\native\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x64;$(ProjectDir)dui\webview2sdk\build\native\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(ProjectDir)dui\webview2sdk\build\native\include;$(IncludePath)</IncludePath>
+    <TargetName>d3d10</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>__TBB_NO_IMPLICIT_LINKAGE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  
+
+</ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Endpoint;UIX -EM;Hook;Hook\include;Hook\imgui;Hook\kiero;API;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>__TBB_NO_IMPLICIT_LINKAGE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;shlwapi.lib;WindowsCodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  
+
+</ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <PreprocessorDefinitions>__TBB_NO_IMPLICIT_LINKAGE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  
+
+</ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>Endpoint;UIX -EM;Hook;Hook\include;Hook\imgui;Hook\kiero;API;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>__TBB_NO_IMPLICIT_LINKAGE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>d3d11.lib;dxgi.lib;shlwapi.lib;WindowsCodecs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy /Y "$(OutDir)$(TargetName)$(TargetExt)" "$(ProjectDir)..\$(TargetName)$(TargetExt)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Hook\cfx\component.cpp" />
+    <ClCompile Include="Hook\cfx\resource.cpp" />
+    <ClCompile Include="Hook\cfx\resource_manager.cpp" />
+    <ClCompile Include="Hook\imgui\imgui.cpp" />
+    <ClCompile Include="Hook\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Hook\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Hook\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Hook\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Hook\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Hook\kiero\Hooksth.cpp" />
+    <ClCompile Include="Hook\kiero\minhook\src\buffer.c" />
+    <ClCompile Include="Hook\kiero\minhook\src\hde\hde32.c" />
+    <ClCompile Include="Hook\kiero\minhook\src\hde\hde64.c" />
+    <ClCompile Include="Hook\kiero\minhook\src\hook.c" />
+    <ClCompile Include="Hook\kiero\minhook\src\trampoline.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Endpoint\TextEditor.cpp" />
+    <ClCompile Include="Hook\include\pattern_scanner.cpp" />
+    <ClCompile Include="Hook\include\Address.cpp" />
+    <ClCompile Include="Hook\include\Core.cpp" />
+    <ClCompile Include="Hook\include\features\ESP.cpp" />
+    <ClCompile Include="Hook\include\features\Aimbot.cpp" />
+    <ClCompile Include="Hook\include\features\NameManager.cpp" />
+    <ClCompile Include="API\api-south\api-south.cpp" />
+    <ClCompile Include="API\api-exec\api-exec.cpp" />
+    <ClCompile Include="scanner\scanner.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Hook\include\tbb\index.html" />
+    <None Include="Hook\kiero\minhook\dll_resources\MinHook.def" />
+    <None Include="UIX -EM\South.webp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Hook\kiero\minhook\dll_resources\MinHook.rc" />
+    <ResourceCompile Include="Endpoint\resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Hook\cfx\component.h" />
+    <ClInclude Include="Hook\cfx\event.h" />
+    <ClInclude Include="Hook\cfx\netlibrary.h" />
+    <ClInclude Include="Hook\cfx\omptr.h" />
+    <ClInclude Include="Hook\cfx\ref_container.h" />
+    <ClInclude Include="Hook\cfx\resource.h" />
+    <ClInclude Include="Hook\cfx\resource_manager.h" />
+    <ClInclude Include="Hook\imgui\imconfig.h" />
+    <ClInclude Include="Hook\imgui\imgui.h" />
+    <ClInclude Include="Hook\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="Hook\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="Hook\imgui\imgui_internal.h" />
+    <ClInclude Include="Hook\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Hook\imgui\imstb_textedit.h" />
+    <ClInclude Include="Hook\imgui\imstb_truetype.h" />
+    <ClInclude Include="includes.h" />
+    <ClInclude Include="memory.h" />
+    <ClInclude Include="Hook\include\tbb\aggregator.h" />
+    <ClInclude Include="Hook\include\tbb\aligned_space.h" />
+    <ClInclude Include="Hook\include\tbb\atomic.h" />
+    <ClInclude Include="Hook\include\tbb\blocked_range.h" />
+    <ClInclude Include="Hook\include\tbb\blocked_range2d.h" />
+    <ClInclude Include="Hook\include\tbb\blocked_range3d.h" />
+    <ClInclude Include="Hook\include\tbb\blocked_rangeNd.h" />
+    <ClInclude Include="Hook\include\tbb\cache_aligned_allocator.h" />
+    <ClInclude Include="Hook\include\tbb\combinable.h" />
+    <ClInclude Include="Hook\include\tbb\compat\ppl.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_hash_map.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_lru_cache.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_priority_queue.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_queue.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_unordered_map.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_unordered_set.h" />
+    <ClInclude Include="Hook\include\tbb\concurrent_vector.h" />
+    <ClInclude Include="Hook\include\tbb\critical_section.h" />
+    <ClInclude Include="Hook\include\tbb\enumerable_thread_specific.h" />
+    <ClInclude Include="Hook\include\tbb\flow_graph.h" />
+    <ClInclude Include="Hook\include\tbb\flow_graph_abstractions.h" />
+    <ClInclude Include="Hook\include\tbb\flow_graph_opencl_node.h" />
+    <ClInclude Include="Hook\include\tbb\gfx_factory.h" />
+    <ClInclude Include="Hook\include\tbb\global_control.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_aggregator_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_concurrent_queue_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_concurrent_unordered_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_async_msg_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_body_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_cache_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_indexer_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_item_buffer_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_join_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_node_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_streaming_node.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_tagged_buffer_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_trace_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_flow_graph_types_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_mutex_padding.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_range_iterator.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_tbb_hash_compare_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_tbb_strings.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_tbb_trace_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_tbb_windef.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_template_helpers.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_x86_eliding_mutex_impl.h" />
+    <ClInclude Include="Hook\include\tbb\internal\_x86_rtm_rw_mutex_impl.h" />
+    <ClInclude Include="Hook\include\tbb\iterators.h" />
+    <ClInclude Include="Hook\include\tbb\machine\gcc_arm.h" />
+    <ClInclude Include="Hook\include\tbb\machine\gcc_generic.h" />
+    <ClInclude Include="Hook\include\tbb\machine\gcc_ia32_common.h" />
+    <ClInclude Include="Hook\include\tbb\machine\gcc_itsx.h" />
+    <ClInclude Include="Hook\include\tbb\machine\ibm_aix51.h" />
+    <ClInclude Include="Hook\include\tbb\machine\icc_generic.h" />
+    <ClInclude Include="Hook\include\tbb\machine\linux_common.h" />
+    <ClInclude Include="Hook\include\tbb\machine\linux_ia32.h" />
+    <ClInclude Include="Hook\include\tbb\machine\linux_ia64.h" />
+    <ClInclude Include="Hook\include\tbb\machine\linux_intel64.h" />
+    <ClInclude Include="Hook\include\tbb\machine\macos_common.h" />
+    <ClInclude Include="Hook\include\tbb\machine\mac_ppc.h" />
+    <ClInclude Include="Hook\include\tbb\machine\mic_common.h" />
+    <ClInclude Include="Hook\include\tbb\machine\msvc_armv7.h" />
+    <ClInclude Include="Hook\include\tbb\machine\msvc_ia32_common.h" />
+    <ClInclude Include="Hook\include\tbb\machine\sunos_sparc.h" />
+    <ClInclude Include="Hook\include\tbb\machine\windows_api.h" />
+    <ClInclude Include="Hook\include\tbb\machine\windows_ia32.h" />
+    <ClInclude Include="Hook\include\tbb\machine\windows_intel64.h" />
+    <ClInclude Include="Hook\include\tbb\memory_pool.h" />
+    <ClInclude Include="Hook\include\tbb\mutex.h" />
+    <ClInclude Include="Hook\include\tbb\null_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\null_rw_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_do.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_for.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_for_each.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_invoke.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_reduce.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_scan.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_sort.h" />
+    <ClInclude Include="Hook\include\tbb\parallel_while.h" />
+    <ClInclude Include="Hook\include\tbb\partitioner.h" />
+    <ClInclude Include="Hook\include\tbb\pipeline.h" />
+    <ClInclude Include="Hook\include\tbb\queuing_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\queuing_rw_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\reader_writer_lock.h" />
+    <ClInclude Include="Hook\include\tbb\recursive_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\runtime_loader.h" />
+    <ClInclude Include="Hook\include\tbb\scalable_allocator.h" />
+    <ClInclude Include="Hook\include\tbb\spin_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\spin_rw_mutex.h" />
+    <ClInclude Include="Hook\include\tbb\task.h" />
+    <ClInclude Include="Hook\include\tbb\task_arena.h" />
+    <ClInclude Include="Hook\include\tbb\task_group.h" />
+    <ClInclude Include="Hook\include\tbb\task_scheduler_init.h" />
+    <ClInclude Include="Hook\include\tbb\task_scheduler_observer.h" />
+    <ClInclude Include="Hook\include\tbb\tbb.h" />
+    <ClInclude Include="Hook\include\tbb\tbbmalloc_proxy.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_allocator.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_config.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_disable_exceptions.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_exception.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_machine.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_profiling.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_stddef.h" />
+    <ClInclude Include="Hook\include\tbb\tbb_thread.h" />
+    <ClInclude Include="Hook\include\tbb\tick_count.h" />
+    <ClInclude Include="Hook\include\xorstr\xorstr.hpp" />
+    <ClInclude Include="Endpoint\Hooksth.h" />
+    <ClInclude Include="Hook\kiero\Hooksth.h" />
+    <ClInclude Include="Hook\kiero\minhook\include\MinHook.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\buffer.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\hde\hde32.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\hde\hde64.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\hde\pstdint.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\hde\table32.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\hde\table64.h" />
+    <ClInclude Include="Hook\kiero\minhook\src\trampoline.h" />
+    <ClInclude Include="Endpoint\TextEditor.h" />
+    <ClInclude Include="Hook\include\pattern_scanner.h" />
+    <ClInclude Include="Hook\include\Scanner.h" />
+    <ClInclude Include="Hook\include\Address.h" />
+    <ClInclude Include="Hook\include\Core.h" />
+    <ClInclude Include="Hook\include\Graphics.h" />
+    <ClInclude Include="Hook\include\features\ESP.h" />
+    <ClInclude Include="Hook\include\features\Aimbot.h" />
+    <ClInclude Include="Hook\include\features\NameManager.h" />
+    <ClInclude Include="API\api-south\api-south.h" />
+    <ClInclude Include="API\api-exec\api-exec.h" />
+    <ClInclude Include="scanner\scanner.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="spoof\spoofer_stub.asm">
+      <FileType>Document</FileType>
+    </MASM>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

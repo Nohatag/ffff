@@ -1,0 +1,268 @@
+            } else if (currentTab == 2) {
+
+                ImGui::PushStyleColor(ImGuiCol_ChildBg, IM_COL32(16, 16, 18, 255));
+                static float oSubTabTargetX = 15.0f;
+                static float oSubTabTargetW = 0.0f;
+                ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(22, 0));
+                ImGui::PushStyleVar(ImGuiStyleVar_ButtonTextAlign, ImVec2(0.5f, 0.32f));
+
+                static float oSubAlphas[5] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+
+                auto OptSubTab = [&](const char* label, int index) {
+                    ImGui::PushFont(io.Fonts->Fonts[3]);
+                    ImVec2 p = ImGui::GetCursorScreenPos();
+                    bool active = (optionsSubTab == index);
+                    float textW = ImGui::CalcTextSize(label).x;
+                    float tW = textW + 56.0f;
+                    float tH = 40.0f;
+
+                    oSubAlphas[index] = ImLerp(oSubAlphas[index], active ? 1.0f : 0.0f, io.DeltaTime * 12.0f);
+
+                    if (oSubAlphas[index] > 0.001f) {
+                        drawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + tW, p.y + tH), IM_COL32(23, 23, 28, (int)(255 * oSubAlphas[index])), 5.0f);
+                    }
+
+                    ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(0, 0, 0, 0));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonHovered, IM_COL32(0, 0, 0, 0));
+                    ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(0, 0, 0, 0));
+                    if (ImGui::InvisibleButton(label, ImVec2(tW, tH))) optionsSubTab = index;
+
+                    ImVec2 tSize = ImGui::CalcTextSize(label);
+                    ImVec2 tPos = ImVec2(p.x + (tW - tSize.x) * 0.5f, p.y + (tH - tSize.y) * 0.5f);
+                    ImU32 tCol = active ? IM_COL32(255, 255, 255, 255) : IM_COL32(110, 110, 115, 255);
+                    drawList->AddText(tPos, tCol, label);
+
+                    if (oSubAlphas[index] > 0.001f) {
+                        float lineX1 = p.x + (tW - textW) * 0.5f;
+                        float lineX2 = lineX1 + textW;
+                        float lineY1 = p.y + tH - 3.0f;
+                        float lineY2 = p.y + tH;
+
+                        // Brighter red line
+                        drawList->AddRectFilled(ImVec2(lineX1, lineY1), ImVec2(lineX2, lineY2), IM_COL32(255, 0, 0, (int)(255 * oSubAlphas[index])), 360.f, ImDrawCornerFlags_Top);
+                        
+                        // Soft red light glow effect
+                        for (int g = 1; g <= 6; ++g) {
+                            float offset = (float)g * 0.8f;
+                            float falloff = 1.0f - ((float)g / 6.0f);
+                            ImU32 glowCol = IM_COL32(255, 0, 0, (int)(50 * falloff * oSubAlphas[index]));
+                            drawList->AddRectFilled(ImVec2(lineX1 - offset, lineY1 - offset), ImVec2(lineX2 + offset, lineY2 + offset), glowCol, 360.f, ImDrawCornerFlags_Top);
+                        }
+                    }
+                    ImGui::PopStyleColor(3);
+                    ImGui::PopFont();
+                    ImGui::SameLine();
+                };
+
+                ImGui::SetCursorPos(ImVec2(4, 0));
+
+                float horizLineY = ImGui::GetWindowPos().y + 48.0f;
+                drawList->AddLine(ImVec2(windowPos.x + sidebarWidth + 2.0f, horizLineY), ImVec2(windowPos.x + windowSize.x - 10, horizLineY), IM_COL32(255, 255, 255, 15), 1.0f);
+
+                ImGui::SetCursorPos(ImVec2(4, 0));
+                OptSubTab("Aimbot", 0);
+                OptSubTab("Player", 1);
+                OptSubTab("Vehicle", 2);
+                OptSubTab("Weapon", 3);
+                ImGui::PopStyleVar(2);
+
+                if (optionsSubTab != optionsLastSubTab) { optionsSubTabFade = 0.0f; optionsLastSubTab = optionsSubTab; }
+                optionsSubTabFade = ImLerp(optionsSubTabFade, 1.0f, io.DeltaTime * 10.0f);
+
+                anyComboOpen = false; 
+                ImGui::PushStyleVar(ImGuiStyleVar_Alpha, contentFade * optionsSubTabFade);
+                
+                    if (optionsSubTab == 0) {
+
+                        ImGui::SetCursorPos(ImVec2(1, 56)); 
+                        
+                        ImGui::BeginGroup();
+                        {
+                            NexusSection("Aimbot", tex_aim_gen, 285, [&]() {
+                                AimToggle("Enable (?)", &aim_Enable, 28.0f, 0, 50.0f);
+                                AimKeybind("Aimbot Keybind", &aim_Key);
+                                AimToggle("Show Fov", &aim_ShowFov, 28.0f, 0, 50.0f);
+                                AimColor("Fov Color", col_aim_Fov);
+                                AimSlider("Aimbot Fov", &aim_Fov, 1, 250000, "%.0f", 110.0f);
+                                AimSlider("Smoothing", &aim_Smoothing, 0.0f, 50000.0f, "%.0f", 110.0f);
+                                const char* bones[] = { "Head", "Chest", "Pelvis" };
+                                AimCombo("Target Bone", &aim_BoneIdx, bones, IM_ARRAYSIZE(bones));
+                                AimToggle("Visible Check", &aim_VisibleCheck, 28.0f, 0, 50.0f);
+                                AimToggle("Exclude Deads", &aim_ExcludeDeads, 28.0f, 0, 50.0f);
+                                AimToggle("Target NPCs", &aim_TargetNpcs, 28.0f, 0, 50.0f);
+                                AimToggle("Target Admins", &aim_TargetAdmins, 28.0f, 0, 50.0f);
+                            }, false, 34.0f, ImVec2(0, 0));
+
+                            ImGui::SetCursorPosY(ImGui::GetCursorPosY() - 2.0f);
+
+                            NexusSection("Silent Aim", tex_aim_gen, 120, [&]() {
+                                AimToggle("Enable Silent", &silent_Enable, 28.0f, 0, 50.0f);
+                                AimKeybind("Silent Keybind", &silent_Key, 28.0f); 
+                                AimToggle("Magic Bullet", &silent_MagicBullet, 28.0f, 0, 50.0f);
+                                AimToggle("Silent FOV", &silent_ShowFov, 28.0f, 0, 50.0f);
+                                AimColor("Fov Color", col_silent_Fov, 28.0f);
+                                AimSlider("Silent Fov", &silent_Fov, 1, 200000, "%.0f", 80.0f, 28.0f); 
+                            }, false, 34.0f, ImVec2(0, 0));
+                        }
+                        ImGui::EndGroup();
+
+                        ImGui::SameLine(contentW * 0.505f); 
+                        
+                        ImGui::BeginGroup();
+                        {
+                            NexusSectionR("Player List", tex_aim_friend, 250, [&]() {
+                                static std::map<std::string, float> playerAlphas;
+
+                                std::vector<PlayerListData> localList;
+                                {
+                                    SRWLockGuard lock(&g_PlayerListLock);
+                                    localList = g_PlayerList;
+                                }
+                                std::sort(localList.begin(), localList.end(), [](const PlayerListData& a, const PlayerListData& b) {
+                                    return std::strcmp(a.name, b.name) < 0;
+                                });
+
+                                if (localList.empty()) {
+                                    ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 5);
+                                    ImGui::TextColored(ImVec4(0.45f, 0.45f, 0.48f, 1.0f), "No players nearby");
+                                    playerAlphas.clear();
+                                } else {
+                                    SRWLockGuard lock(&g_PlayerListLock);
+                                    for (const auto& player : localList) {
+                                        float& alpha = playerAlphas[player.name];
+                                        alpha = ImLerp(alpha, 1.0f, io.DeltaTime * 5.0f);
+
+                                        ImGui::PushStyleVar(ImGuiStyleVar_Alpha, ImClamp(alpha, 0.0f, 1.0f));
+                                        
+                                        bool& active = g_PlayerListToggles[player.name];
+                                        bool wasActive = active;
+                                        
+                                        ImVec4 offColor = player.isAdmin ? ImVec4(0.9f, 0.1f, 0.1f, 1.0f) : ImVec4(0.45f, 0.45f, 0.48f, 1.0f);
+                                        
+                                        std::string displayLabel = std::string(player.name) + " [" + std::to_string((int)player.distance) + "m]";
+                                        
+                                        if (AimToggle(player.name, &active, 28.0f, colWidthR, 54.0f, offColor, displayLabel.c_str())) {
+                                            if (active && !wasActive) {
+                                                // Single-select: turn off all other players
+                                                for (auto& pair : g_PlayerListToggles) {
+                                                    if (pair.first != player.name) {
+                                                        pair.second = false;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        
+                                        ImGui::PopStyleVar();
+                                    }
+
+                                    if (playerAlphas.size() > localList.size() + 20) {
+                                        playerAlphas.clear();
+                                    }
+                                }
+                            }, 34.0f, ImVec2(0, 0));
+                        }
+                        ImGui::EndGroup();
+                    } else if (optionsSubTab == 1) {
+
+                        ImGui::SetCursorPos(ImVec2(1, 56));
+                        
+                        ImGui::BeginGroup();
+                        {
+                            NexusSection("Players ESP", tex_aim_other, 230, [&]() {
+                                AimToggle("Enable (?)", &esp_Enable, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Names", &esp_Names, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Weapons", &esp_Weapons, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Head", &esp_Head, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Skeleton", &esp_Skeleton, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Healthbar", &esp_Healthbar, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Armorbar", &esp_Armorbar, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Lines", &esp_Lines, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Corner Box", &esp_Box, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Self", &esp_Self, 28.0f, 0, 50.0f);
+                            }, false, 38.0f, ImVec2(-4.0f, 4.0f));
+
+                            NexusSection("Admins ESP", tex_aim_other, 130, [&]() {
+                                AimToggle("Admins List", &admin_List, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Lines ", &admin_Lines, 28.0f, 0, 50.0f);
+                                AimToggle("Admin Skeleton", &admin_Skeleton, 28.0f, 0, 50.0f);
+                            }, false, 38.0f, ImVec2(-4.0f, 4.0f));
+
+                        }
+                        ImGui::EndGroup();
+
+                        ImGui::SameLine(contentW * 0.505f);
+
+                        ImGui::BeginGroup();
+                        {
+                            NexusSectionR("ESP Settings", tex_aim_other, 200, [&]() {
+                                AimSlider("Distance", &esp_Distance, 0, 3000, "%.0f", 110.0f, 28.0f, colWidthR);
+                                AimToggle("Infinite Distance", &esp_InfDistance, 28.0f, colWidthR);
+                                AimToggle("Show Distance", &esp_ShowDistance, 28.0f, colWidthR);
+                                AimToggle("Target NPCs", &esp_TargetNpcs, 28.0f, colWidthR);
+                                AimToggle("Visible Check", &esp_VisibleCheck, 28.0f, colWidthR);
+                                AimSlider("Text Size", &esp_TextSize, 5, 30, "%.3f", 110.0f, 28.0f, colWidthR);
+                            }, 38.0f, ImVec2(-4.0f, 4.0f), false, false);
+
+                            NexusSectionR("ESP Colors", tex_aim_other, 185, [&]() {
+                                AimColor("Skeleton Color", col_Skeleton, 28.0f, colWidthR);
+                                AimColor("Invisible Skeleton Color", col_InvSkeleton, 28.0f, colWidthR);
+                                AimColor("Friend Skeleton Color", col_FriendSkeleton, 28.0f, colWidthR);
+                                AimColor("Box Color", col_Box, 28.0f, colWidthR);
+                                AimColor("Box Fill Color", col_BoxFill, 28.0f, colWidthR);
+                            }, 38.0f, ImVec2(-4.0f, 4.0f));
+                        }
+                        ImGui::EndGroup();
+                    } else if (optionsSubTab == 2) {
+
+                        ImGui::SetCursorPos(ImVec2(1, 56));
+                        
+                        ImGui::BeginGroup();
+                        {
+                            NexusSection("Vehicles ESP", tex_vehicle_crosshair, 180, [&]() {
+                                AimToggle("Enable (?)", &veh_Enable, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Name", &veh_Name, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Marker", &veh_Marker, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Lock State", &veh_LockState, 28.0f, 0, 50.0f);
+                                AimToggle("ESP Lines", &veh_Lines, 28.0f, 0, 50.0f);
+                            }, false, 38.0f, ImVec2(-4.0f, 4.0f), false, false);
+                        }
+                        ImGui::EndGroup();
+
+                        ImGui::SameLine(contentW * 0.505f);
+
+                        ImGui::BeginGroup();
+                        {
+                            NexusSectionR("ESP Settings", tex_aim_other, 135, [&]() {
+                                AimSlider("Distance", &veh_Distance, 0.0f, 3000.0f, "%.0f", 80.0f, 28.0f, colWidthR);
+                                AimToggle("Infinite Distance", &veh_InfDistance, 28.0f, colWidthR);
+                                AimToggle("Show Distance", &veh_ShowDistance, 28.0f, colWidthR);
+                            }, 38.0f, ImVec2(-4.0f, 4.0f));
+                        }
+                        ImGui::EndGroup();
+                    } else if (optionsSubTab == 3) {
+
+                        ImGui::SetCursorPos(ImVec2(1, 56));
+                        
+                        ImGui::BeginGroup();
+                        {
+                            NexusSection("Weapon Modifiers", tex_aim_friend, 130, [&]() {
+                                AimToggle("No Recoil", &wep_NoRecoil);
+                                AimToggle("No Spread", &wep_NoSpread);
+                                AimToggle("Infinite Range", &wep_InfRange);
+                            }, false, 34.0f, ImVec2(0, 0));
+                        }
+                        ImGui::EndGroup();
+
+                        ImGui::SameLine(contentW * 0.505f);
+
+                        ImGui::BeginGroup();
+                        {
+                            NexusSectionR("Crosshair", tex_vehicle_crosshair, 70, [&]() {
+                                AimToggle("Show Crosshair", &wep_ShowCrosshair, 28.0f, colWidthR);
+                            }, 34.0f, ImVec2(0, 0), false);
+                        }
+                        ImGui::EndGroup();
+                    }
+                    ImGui::PopStyleVar();
+                    ImGui::PopStyleColor();
+                } else if (currentTab == 3) {
